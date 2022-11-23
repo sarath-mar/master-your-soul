@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <div class="d-flex align-center home">
+      <banner />
+    </div>
+    <!-- <brief-discription class="mt-10"/> -->
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Banner from "@/components/home/Banner.vue";
+import BriefDiscription from "@/components/home/BriefDiscription.vue";
 
 export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
-  }
-}
+  name: "Home",
+
+  components: { Banner, BriefDiscription },
+};
 </script>
+<style>
+.home {
+  height: 100vh;
+}
+
+</style>
