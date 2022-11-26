@@ -23,11 +23,11 @@
         <v-row>
           <v-col cols="12" sm="8" class="ml-auto">
             <div class="pa-5">
-              <p>Welcome to Master Your Soul -</p>
+              <p>Welcome to Master Your Soul </p>
               <h1>
                 <!-- We are a creative group of people who design influential -->
                 Learn How To Transform To State Of Bliss Using Unique Healing
-                And Meditation Techniques
+                And Meditation Techniques.
               </h1>
               <div class="mt-10">
                 <v-btn x-large outlined color="white" class="button mr-8" dark>
