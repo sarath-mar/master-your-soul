@@ -1,25 +1,24 @@
 <template>
   <div>
-    <div class="d-flex align-center home">
-      <banner />
-    </div>
-    <!-- <brief-discription class="mt-10"/> -->
+    <Banner />
+    <AboutUs />
+    <WhatWeDo />
   </div>
 </template>
 
 <script>
 import Banner from "@/components/home/Banner.vue";
-import BriefDiscription from "@/components/home/BriefDiscription.vue";
+import AboutUs from "@/components/home/AboutUs.vue";
+import WhatWeDo from "@/components/home/WhatWeDo.vue";
 
 export default {
   name: "Home",
 
-  components: { Banner, BriefDiscription },
+  components: { Banner, AboutUs, WhatWeDo },
 };
 </script>
 <style>
 .home {
   height: 100vh;
 }
-
 </style>

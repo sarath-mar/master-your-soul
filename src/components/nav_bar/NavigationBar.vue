@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav >
     <!-- <div v-if="$vuetify.breakpoint.mobile" >
       <v-toolbar  :height="navBarHeight">
         <v-toolbar-title class="text-uppercase  grey--text">
@@ -147,20 +147,19 @@
     </div> -->
 
     <div>
-      <v-toolbar absolute class="  toolbar" :height="navBarHeight">
-        <v-toolbar-title class="text-uppercase  grey--text">
+      <v-toolbar   flat absolute class="toolbar" :height="navBarHeight">
+        <v-toolbar-title class="text-uppercase grey--text">
           <img
             src="../../../public/image/logo.png"
-            class="mt-3"
+            class="mt-6"
             width="110px"
             alt=""
           />
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon class="mr-5 " @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       </v-toolbar>
-      <v-navigation-drawer v-model="drawer" floating  absolute
-      right temporary>
+      <v-navigation-drawer  v-model="drawer" floating absolute right temporary>
         <v-layout justify-end>
           <v-icon @click="close" class="white">mdi-close</v-icon>
         </v-layout>
@@ -194,8 +193,8 @@ export default {
     navBarHeight: "80px",
     projectFirstName: "MASTER YOUR SOUL",
     projectSecondName: "",
-    showLogoutButton:false,
-    roleData:localStorage.getItem("ROLE_OF_USER"),
+    showLogoutButton: false,
+    roleData: localStorage.getItem("ROLE_OF_USER"),
     items: [
       { title: "Home", icon: "mdi-home", route: "/" },
       { title: "About", icon: "mdi-home", route: "/admin" },
@@ -226,16 +225,16 @@ export default {
       //   },
     ],
   }),
-  watch:{
+  watch: {
     roleData: {
       handler(item) {
-        if(item.includes["ADMIN","USER"]){
-          showLogoutButton=true
-        }else{
-          showLogoutButton=false
+        if (item.includes[("ADMIN", "USER")]) {
+          showLogoutButton = true;
+        } else {
+          showLogoutButton = false;
         }
       },
-      deep: true
+      deep: true,
     },
   },
   methods: {
@@ -250,13 +249,15 @@ export default {
 };
 </script>
 <style>
-.logout{
- display: flex;
- align-items: flex-end;
+.logout {
+  display: flex;
+  align-items: flex-end;
 }
-.toolbar{
-  background-color:transparent !important; ;
+.toolbar {
+  background-color: transparent !important;
   width: 100vw;
+  
+ 
 }
 .theme--light.v-btn.v-btn--icon {
   color: white;

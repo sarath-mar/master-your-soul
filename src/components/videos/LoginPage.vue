@@ -52,7 +52,6 @@
           >
         </v-layout>
       </v-form>
-      <!-- </ValidationObserver> -->
       <p v-if="errorFromApi" class="red--text text-center mt-6">
         {{ errorFromApi }}
       </p>

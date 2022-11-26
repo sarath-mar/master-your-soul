@@ -8,7 +8,8 @@
         width="100%"
         elevation="8"
         tile
-        class="red lighten-1 white--text text-center"
+        dark
+        class="green lighten-1 white--text text-center"
       >
         <v-card-text>
           <a

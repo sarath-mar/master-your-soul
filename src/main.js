@@ -15,7 +15,7 @@ new Vue({
 Vue.mixin({
   data() {
     return {
-      projectName:"Master Your Soul"
+      projectName:"Master Your Soul" 
     }
   },
 })
