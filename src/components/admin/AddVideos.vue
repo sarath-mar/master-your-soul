@@ -18,7 +18,7 @@
               <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
               <!-- <v-divider class="mx-4" inset vertical></v-divider> -->
               <v-spacer></v-spacer>
-              <v-dialog v-model="dialog" class="dialog" >
+              <v-dialog v-model="dialog" class="dialog">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
                     color="primary"
@@ -26,7 +26,7 @@
                     class="mb-2"
                     v-bind="attrs"
                     v-on="on"
-                    >New User</v-btn
+                    >Add Video</v-btn
                   >
                 </template>
                 <v-card>
@@ -40,13 +40,13 @@
                         <v-col cols="12">
                           <v-text-field
                             v-model="video.title"
-                            label="Name"
+                            label="Title"
                           ></v-text-field>
                         </v-col>
                         <v-col cols="12">
                           <v-text-field
                             v-model="video.description"
-                            label="Email"
+                            label="Description"
                           ></v-text-field>
                         </v-col>
                         <v-col cols="12">
@@ -307,8 +307,8 @@ ul {
 v-card {
   background-color: #39b54a !important;
 }
-.dialog{
-  width:60vw
+.dialog {
+  width: 60vw;
 }
 /* #39B54A */
 </style>
