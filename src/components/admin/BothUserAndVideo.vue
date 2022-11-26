@@ -1,30 +1,27 @@
 <template>
-  <v-card>
-    <v-tabs v-model="tab" fixed-tabs icons-and-text>
+  <v-card class="tab-card">
+    <!-- <v-tabs v-model="tab" fixed-tabs icons-and-text>
       <v-tabs-slider></v-tabs-slider>
 
-      <v-tab >
+      <v-tab>
         Users
         <v-icon>mdi-account</v-icon>
       </v-tab>
 
-      <v-tab  >
+      <v-tab>
         Videos
         <v-icon>mdi-video</v-icon>
       </v-tab>
     </v-tabs>
 
     <v-tabs-items v-model="tab">
-      <v-tab-item >
+      <v-tab-item>
         <add-user />
-        <!-- <h1>user</h1> -->
       </v-tab-item>
-      <v-tab-item > 
-        <!-- <h1>video</h1> -->
-
+      <v-tab-item>
         <add-videos />
       </v-tab-item>
-    </v-tabs-items>
+    </v-tabs-items> -->
   </v-card>
 </template>
 <script>
@@ -40,3 +37,8 @@ export default {
   },
 };
 </script>
+<style>
+.tab-card {
+  width: 100vw;
+}
+</style>
