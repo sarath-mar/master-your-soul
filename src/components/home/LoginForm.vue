@@ -1,5 +1,5 @@
 <template>
-  <v-dialog persistent transition="dialog-bottom-transition" max-width="600">
+  <v-dialog persistent transition="dialog-bottom-transition" class="login-popup">
     <template v-slot:activator="{ on, attrs }">
       <v-btn
         x-large
@@ -197,3 +197,7 @@ export default {
   },
 };
 </script>
+<style>
+.login-popup{
+  width: 60vw;
+}</style>

@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app> 
     <navigation-bar  class="nav"/>
     <v-main>
        <v-sheet
@@ -42,8 +42,9 @@ export default {
   }
   .nav{
     position: -webkit-sticky; /* for Safari */
-    /* position: sticky; */
-    top: 0px;
+    position: sticky;
+    top: 0px;;
     z-index: 4;
   }
+
 </style>

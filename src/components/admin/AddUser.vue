@@ -212,6 +212,11 @@ export default {
 </script>
 
 <style>
+  .v-data-table>.v-data-table__wrapper .v-data-table__mobile-table-row {
+  margin: 10px;
+  border: 1px solid #ededed; 
+  display: block;
+}
 .what-we {
   /* background-color: #39b54a; */
   /* min-height: 100vh;
