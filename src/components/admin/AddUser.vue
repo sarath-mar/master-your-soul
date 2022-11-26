@@ -11,7 +11,7 @@
       <h1 class="text-center">
         <!-- Masterclass I'll Share With You The Secrets On -->
       </h1>
-      <div class="px-15">
+      <div class="px-3">
         <v-data-table :headers="headers" :items="desserts">
           <template v-slot:top>
             <v-toolbar flat color="white">

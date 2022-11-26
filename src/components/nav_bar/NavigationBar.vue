@@ -1,7 +1,7 @@
 <template>
-  <nav >
+  <nav>
     <div>
-      <v-toolbar   flat absolute class="toolbar" :height="navBarHeight">
+      <v-toolbar flat class="toolbar" :height="navBarHeight">
         <v-toolbar-title class="text-uppercase grey--text">
           <img
             src="../../../public/image/logo.png"
@@ -10,13 +10,15 @@
             alt=""
           />
         </v-toolbar-title>
-       
+
         <v-spacer></v-spacer>
-        <v-app-bar-nav-icon class="mr-5 black" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <!-- <v-app-bar-nav-icon
+          class="mr-5 black"
+          @click.stop="drawer = !drawer"
+        ></v-app-bar-nav-icon> -->
       </v-toolbar>
-      
     </div>
-    <v-navigation-drawer  v-model="drawer" floating absolute left  temporary>
+    <!-- <v-navigation-drawer v-model="drawer" floating absolute temporary  >
         <v-layout justify-end>
           <v-icon @click="close" class="white">mdi-close</v-icon>
         </v-layout>
@@ -36,7 +38,7 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
-      </v-navigation-drawer>
+      </v-navigation-drawer> -->
   </nav>
 </template>
 
@@ -110,10 +112,8 @@ export default {
   align-items: flex-end;
 }
 .toolbar {
-  /* background-color: red !important; */
+  background-color: transparent !important;
   width: 100vw;
-  
- 
 }
 .theme--light.v-btn.v-btn--icon {
   color: white;
