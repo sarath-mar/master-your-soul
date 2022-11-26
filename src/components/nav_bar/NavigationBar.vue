@@ -48,7 +48,10 @@
             class="mr-5 nav-icon"
             @click.stop="drawer = !drawer"
           ></v-app-bar-nav-icon>
-          <v-navigation-drawer
+          
+        </div>
+      </div>
+      <v-navigation-drawer
             v-model="drawer"
             floating
             absolute
@@ -75,8 +78,6 @@
               </v-list-item>
             </v-list>
           </v-navigation-drawer>
-        </div>
-      </div>
     </div>
   </nav>
 </template>
@@ -154,6 +155,7 @@ export default {
   background-color:rgb(19, 19, 19);
   justify-content: space-between;
   height: 80px;
+  /* z-index:100 */
 }
 .logout {
   display: flex;

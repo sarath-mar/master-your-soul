@@ -1,6 +1,6 @@
 <template>
   <v-card class="tab-card">
-    <!-- <v-tabs v-model="tab" fixed-tabs icons-and-text>
+    <v-tabs v-model="tab" fixed-tabs icons-and-text>
       <v-tabs-slider></v-tabs-slider>
 
       <v-tab>
@@ -21,7 +21,7 @@
       <v-tab-item>
         <add-videos />
       </v-tab-item>
-    </v-tabs-items> -->
+    </v-tabs-items>
   </v-card>
 </template>
 <script>
