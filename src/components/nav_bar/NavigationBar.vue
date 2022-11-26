@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div>
-      <v-toolbar flat class="toolbar" :height="navBarHeight">
+      <v-toolbar flat absolute class="toolbar" :height="navBarHeight">
         <v-toolbar-title class="text-uppercase grey--text">
           <img
             src="../../../public/image/logo.png"
@@ -117,5 +117,8 @@ export default {
 }
 .theme--light.v-btn.v-btn--icon {
   color: white;
+}
+img{
+  /* background-color:white; */
 }
 </style>

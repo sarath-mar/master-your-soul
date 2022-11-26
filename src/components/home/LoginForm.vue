@@ -1,5 +1,5 @@
 <template>
-  <v-dialog persistent transition="dialog-bottom-transition" class="login-popup">
+  <v-dialog persistent transition="dialog-bottom-transition" class="login-popup" max-width="400">
     <template v-slot:activator="{ on, attrs }">
       <v-btn
         x-large
@@ -99,8 +99,8 @@ export default {
       console.log(this.phone + this.password);
       // this.$store.state.signin = true;
 
-      let email = this.phone;
-      let password = this.password;
+      let email = this.phone.trim();
+      let password = this.password.trim();
       const auth = getAuth(app);
       console.log(auth);
       let ADMIN_ID = ["9JYWpLhJRLSWPMpYSi5Di6lUH5i1"];
