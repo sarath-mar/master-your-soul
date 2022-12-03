@@ -22,5 +22,6 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app)
 const userCollection = collection(db, "users")
-export {app,userCollection,getDoc,db,setDoc,addDoc,doc,Timestamp}
+const videoCollection = collection(db, "videos")
+export {app,userCollection,getDoc,db,setDoc,addDoc,doc,Timestamp,videoCollection}
 // const analytics = getAnalytics(app);

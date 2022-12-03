@@ -3,8 +3,6 @@
     <div class="content-data">
       <div class="">
         <span class="what-we-first">User Videos</span>
-        <!-- <v-spacer></v-spacer> -->
-        <!-- <v-btn class="float-right ">Videos</v-btn> -->
       </div>
 
       <div class="divider"><p class="text-center"></p></div>
@@ -12,95 +10,89 @@
         <!-- Masterclass I'll Share With You The Secrets On -->
       </h1>
       <div class="px-3">
-        <v-data-table :headers="headers" :items="desserts">
-          <template v-slot:top>
-            <v-toolbar flat color="white">
-              <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
-              <!-- <v-divider class="mx-4" inset vertical></v-divider> -->
-              <v-spacer></v-spacer>
-              <v-dialog v-model="dialog" class="dialog">
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn
-                    color="primary"
-                    dark
-                    class="mb-2"
-                    v-bind="attrs"
-                    v-on="on"
-                    >Add Video</v-btn
-                  >
-                </template>
-                <v-card>
-                  <v-card-title>
-                    <span class="headline">{{ formTitle }}</span>
-                  </v-card-title>
+        <v-toolbar flat color="white">
+          <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
+          <!-- <v-divider class="mx-4" inset vertical></v-divider> -->
+          <v-spacer></v-spacer>
+          <v-dialog v-model="dialog" class="dialog" max-width="80vh">
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on"
+                >Add Video</v-btn
+              >
+            </template>
+            <v-card>
+              <v-card-title>
+                <span class="headline">{{ formTitle }}</span>
+              </v-card-title>
 
-                  <v-card-text>
-                    <v-container>
-                      <v-row>
-                        <v-col cols="12">
-                          <v-text-field
-                            v-model="video.title"
-                            label="Title"
-                          ></v-text-field>
-                        </v-col>
-                        <v-col cols="12">
-                          <v-text-field
-                            v-model="video.description"
-                            label="Description"
-                          ></v-text-field>
-                        </v-col>
-                        <v-col cols="12">
-                          <v-file-input
-                            accept="video/*"
-                            placeholder="Pick an mp4 video"
-                            v-model="video.file"
-                            prepend-icon="mdi-video"
-                            label="Video"
-                            @change="handleFileUpload"
-                            show-size
-                            counter
-                            multiple
-                          ></v-file-input>
-                        </v-col>
-                        <v-col cols="12">
-                          <video
-                            class="video-player"
-                            id="video-preview"
-                            controls
-                            autoplay
-                            muted
-                            v-show="file !== ''"
-                          >
-                            <source
-                              class="video-src"
-                              type="video/mp4 mp4 m4v f4v f4p"
-                            />
-                            <source
-                              class="video-src"
-                              type=" video/mp4 mp4 m4v f4v f4p"
-                            />
-                            <source class="video-src" type="video/ogg ogv" />
-                            <source class="video-src" type="video/webm webm" />
-                            <source class="video-src" type="video/x-flv flv" />
-                            Your browser does not support HTML video.
-                          </video>
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                  </v-card-text>
-
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" text @click="close"
-                      >Cancel</v-btn
-                    >
-                    <v-btn color="blue darken-1" text @click="save">Save</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-            </v-toolbar>
-          </template>
-          <template v-slot:[`item.actions`]="{ item }">
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="title"
+                        label="Title"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-text-field
+                        v-model="description"
+                        label="Description"
+                      ></v-text-field>
+                    </v-col>
+                    <v-col cols="12">
+                      <v-file-input
+                        accept="video/*"
+                        placeholder="Pick an mp4 video"
+                        v-model="file"
+                        prepend-icon="mdi-video"
+                        label="Video"
+                        @change="handleFileUpload"
+                        show-size
+                        counter
+                        multiple
+                      ></v-file-input>
+                    </v-col>
+                    <v-col cols="12">
+                      <video
+                        class="video-player"
+                        id="video-preview"
+                        controls
+                        autoplay
+                        muted
+                        v-show="file !== ''"
+                      >
+                        <source
+                          class="video-src"
+                          type="video/mp4 mp4 m4v f4v f4p"
+                        />
+                        <source
+                          class="video-src"
+                          type=" video/mp4 mp4 m4v f4v f4p"
+                        />
+                        <source class="video-src" type="video/ogg ogv" />
+                        <source class="video-src" type="video/webm webm" />
+                        <source class="video-src" type="video/x-flv flv" />
+                        Your browser does not support HTML video.
+                      </video>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+              <p v-if="errorFromApi" class="red--text text-center mb-0">
+                {{ errorFromApi }}
+              </p>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
+                <v-btn color="blue darken-1" :loading="btn_loading" text @click="save">Save</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-toolbar>
+        <admin-video />
+        <!-- </template> -->
+        <!-- <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="editItem(item)">
               mdi-pencil
             </v-icon>
@@ -108,55 +100,31 @@
           </template>
           <template v-slot:no-data>
             <v-btn color="primary" @click="initialize">Reset</v-btn>
-          </template>
-        </v-data-table>
+          </template> -->
+        <!-- </v-data-table> -->
       </div>
     </div>
   </div>
 </template>
 <script>
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { updateDoc, doc, addDoc } from "@firebase/firestore";
+// import {} from "@firebase/firestore";
+import AdminVideo from "./AdminVideo.vue";
+import { videoCollection } from "@/firebase";
+// import { ref } from "vue";
 export default {
+  components: { AdminVideo },
   data: () => ({
     dialog: false,
-    headers: [
-      {
-        text: "Si No",
-        align: "start",
-        sortable: false,
-        value: "si_no",
-      },
-      { text: "User Name", value: "name" },
-      { text: "Email", value: "email" },
-      { text: "Password", value: "password" },
-      { text: "", value: "actions", align: "end" },
-    ],
-    desserts: [
-      {
-        si_no: "1",
-        name: "Sarath",
-        email: "sarathbnm@gmail.com",
-        password: "Sarath871@",
-      },
-      {
-        si_no: "2",
-        name: "Sarath",
-        email: "sarathbnm@gmail.com",
-        password: "Sarath871@",
-      },
-      {
-        si_no: "3",
-        name: "Sarath",
-        email: "sarathbnm@gmail.com",
-        password: "Sarath871@",
-      },
-    ],
+    btn_loading:false,
+    errorFromApi: "",
     file: "",
     fileSrc: "",
-    video: {
-      title: "",
-      description: "",
-      file: "",
-    },
+
+    title: "",
+    description: "",
+    file: "",
     editedIndex: -1,
     editedItem: {
       name: "",
@@ -238,14 +206,46 @@ export default {
         this.editedIndex = -1;
       });
     },
+    
+    async save() {
+      this.errorFromApi = "";
+      this.btn_loading = true;
+      let data = await addDoc(videoCollection, {
+        title: this.title,
+        description: this.description,
+      });
+      if (data && this.file) {
+        let postUrl = "";
+        var storageRef = ref(getStorage(), `videos/${data.id}.mp4`);
+        // const metadata = {
+        //   contentType: "application/pdf",
+        // };
 
-    save() {
-      if (this.editedIndex > -1) {
-        Object.assign(this.desserts[this.editedIndex], this.editedItem);
-      } else {
-        this.desserts.push(this.editedItem);
+        uploadBytes(storageRef, this.file)
+          .then(async (snapshot) => {
+            console.log("Uploaded a pdf document or file!");
+            console.log(snapshot);
+            postUrl = await getDownloadURL(storageRef);
+            if (postUrl) {
+              let docRef = doc(videoCollection, data.id);
+              await updateDoc(docRef, {
+                postUrl,
+              })
+                .then(() => {
+                  this.dialog = false;
+                  this.button_loading = false;
+                  console.log("added finally");
+                  this.$emit("updatePost");
+                })
+                .catch(() => {
+                  this.button_loading = false;
+                });
+            }
+          })
+          .catch(() => {
+            this.button_loading = false;
+          });
       }
-      this.close();
     },
   },
 };

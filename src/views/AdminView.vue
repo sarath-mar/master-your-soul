@@ -14,9 +14,9 @@ export default {
     return {};
   },
   created() {
-    // if (!(userRole() && userRole() == "ADMIN")) {
-    //   this.$router.replace({ path: "/" });
-    // }
+    if (!(userRole() && userRole() == "ADMIN")) {
+      this.$router.replace({ path: "/" });
+    }
   },
 };
 </script>

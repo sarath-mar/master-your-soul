@@ -86,6 +86,9 @@
               </v-dialog>
             </v-toolbar>
           </template>
+          <template v-slot:[`item.createdAt`]="{ item }">
+            {{new Date(item.createdAt.toDate()).toUTCString()}}
+          </template>
           <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="editItem(item)">
               mdi-pencil
@@ -139,8 +142,9 @@ export default {
       { text: "User Name", value: "name" },
       { text: "Email", value: "email" },
       { text: "Password", value: "password" },
+      { text: "Created At", value: "createdAt" },
       { text: "User type", value: "userType" },
-      { text: "", value: "actions", align: "end" },
+      // { text: "", value: "actions", align: "end" },
     ],
     userList: [
       // {
@@ -214,6 +218,7 @@ export default {
       this.userList = [];
 
       const auth = getAuth();
+      console.log(auth)
       onAuthStateChanged(auth, async (user) => {
         if (user) {
           const q = query(userCollection, limit(limitData));
@@ -232,6 +237,7 @@ export default {
           });
         } else {
           this.userList = [];
+          this.$router.replace({ path: "/404-error" });
         }
       });
 

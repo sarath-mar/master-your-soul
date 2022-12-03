@@ -1,5 +1,6 @@
 const functions = require("firebase-functions");
-
+const admin = require('firebase-admin')
+admin.initializeApp()
 // // Create and deploy your first functions
 // // https://firebase.google.com/docs/functions/get-started
 //
@@ -7,3 +8,15 @@ const functions = require("firebase-functions");
 //   functions.logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
+export const addAdminRole = (data, context) => {
+    return admin.auth().getUserByEmail(data.email).then(user => {
+        return admin.auth().setCustomUserClaims(user.uid, {
+            admin: true
+        })
+    }).then(() => {
+        return {
+            message: `Success ${data.email} has been made an admin`
+        }
+    }).catch((e) => e)
+
+}
