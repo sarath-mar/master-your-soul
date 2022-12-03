@@ -101,13 +101,18 @@
   </div>
 </template>
 <script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { userCollection, doc, addDoc, Timestamp } from "@/firebase";
 import { query, where, getDocs, limit } from "firebase/firestore";
 import { userRole, userRoles } from "@/utils/fetchUser";
 
 export default {
   data: () => ({
+    userLimit: 20,
     dialog: false,
     btn_loading: false,
     errorFromApi: "",
@@ -134,6 +139,7 @@ export default {
       { text: "User Name", value: "name" },
       { text: "Email", value: "email" },
       { text: "Password", value: "password" },
+      { text: "User type", value: "userType" },
       { text: "", value: "actions", align: "end" },
     ],
     userList: [
@@ -189,7 +195,7 @@ export default {
   },
 
   created() {
-    this.getUserData(20);
+    this.getUserData(this.userLimit);
   },
 
   methods: {
@@ -205,22 +211,30 @@ export default {
       //   this.desserts.splice(index, 1);
     },
     async getUserData(limitData) {
-      const q = query(userCollection, limit(limitData));
-      //  const q = query(userCollection, where("email", "==", user.email));
+      this.userList = [];
 
-      const userListData = await getDocs(q);
-      if (userListData.docs.lenght);
-      let index = limitData - 20;
-      userListData.forEach((doc) => {
-        let eachUser = {
-          si_no: index + 1,
-          id: doc.id,
-          ...doc.data(),
-        };
-        this.userList.push(eachUser);
-        index++;
-        // console.log(doc.id, " => ", doc.data());
+      const auth = getAuth();
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          const q = query(userCollection, limit(limitData));
+          const userListData = await getDocs(q);
+          if (userListData.docs.lenght);
+          let index = limitData - 20;
+          userListData.forEach((doc) => {
+            let eachUser = {
+              si_no: index + 1,
+              id: doc.id,
+              ...doc.data(),
+            };
+            this.userList.push(eachUser);
+            index++;
+            // console.log(doc.id, " => ", doc.data());
+          });
+        } else {
+          this.userList = [];
+        }
       });
+
       console.log(this.userList);
     },
 
@@ -251,6 +265,8 @@ export default {
           if (!data) {
             this.errorFromApi = "Adding User Failed";
           }
+
+          await this.getUserData(this.userLimit);
           this.btn_loading = false;
           this.close();
         })

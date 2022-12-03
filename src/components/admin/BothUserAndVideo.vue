@@ -1,5 +1,6 @@
 <template>
   <v-card class="tab-card">
+    <v-icon @click="logOut" class="float-right mr-5"> mdi-logout </v-icon>
     <v-tabs v-model="tab" fixed-tabs icons-and-text>
       <v-tabs-slider></v-tabs-slider>
 
@@ -25,6 +26,8 @@
   </v-card>
 </template>
 <script>
+import { getAuth, signOut } from "firebase/auth";
+
 import AddUser from "./AddUser.vue";
 import AddVideos from "./AddVideos.vue";
 export default {
@@ -34,6 +37,21 @@ export default {
       tab: null,
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     };
+  },
+  methods: {
+    async logOut() {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          localStorage.clear();
+          this.$router.replace({ path: "/" });
+        })
+        .catch((error) => {
+          // An error happened.
+          console.log(error);
+        });
+    },
   },
 };
 </script>

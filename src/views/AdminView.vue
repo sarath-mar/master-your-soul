@@ -5,18 +5,18 @@
   </div>
 </template>
 <script>
-import AddUser from "@/components/admin/AddUser.vue";
+// import AddUser from "@/components/admin/AddUser.vue";
 import BothUserAndVideo from "@/components/admin/BothUserAndVideo.vue";
 import { userRole} from "@/utils/fetchUser";
 export default {
-  components: { AddUser, BothUserAndVideo },
+  components: {  BothUserAndVideo },
   data() {
     return {};
   },
   created() {
-    if (!(userRole() && userRole() == "ADMIN")) {
-      this.$router.replace({ path: "/" });
-    }
+    // if (!(userRole() && userRole() == "ADMIN")) {
+    //   this.$router.replace({ path: "/" });
+    // }
   },
 };
 </script>
