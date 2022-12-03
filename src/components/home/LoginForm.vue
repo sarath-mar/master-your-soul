@@ -1,5 +1,10 @@
 <template>
-  <v-dialog persistent transition="dialog-bottom-transition" class="login-popup" max-width="400">
+  <v-dialog
+    persistent
+    transition="dialog-bottom-transition"
+    class="login-popup"
+    max-width="400"
+  >
     <template v-slot:activator="{ on, attrs }">
       <v-btn
         x-large
@@ -56,7 +61,7 @@
               >
             </v-layout>
           </v-form>
-          <p v-if="errorFromApi" class="red--text text-center mt-6">
+          <p v-if="errorFromApi" class="red--text text-center">
             {{ errorFromApi }}
           </p>
         </v-card-text>
@@ -70,7 +75,7 @@
 <script>
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app, db, userCollection, doc, setDoc, addDoc } from "../../firebase";
-import {userInfoDetails} from "../../utils/fetchUser"
+import { userInfoDetails } from "../../utils/fetchUser";
 // import { doc, setDoc } from "@firebase/firestore";
 
 export default {
@@ -127,10 +132,10 @@ export default {
               user.stsTokenManager.refreshToken
             );
             localStorage.setItem("USER_DETAILS", userData);
-            localStorage.setItem("ROLE_OF_USER", userRole);
-            let sample=userInfoDetails()
-            console.log("...............................")
-            console.log(sample)
+            localStorage.setItem("USER_ROLE", userRole);
+            let sample = userInfoDetails();
+            console.log("...............................");
+            console.log(sample);
             userRole === "ADMIN"
               ? this.$router.replace({ path: "/admin" })
               : userRole === "USER"
@@ -198,6 +203,7 @@ export default {
 };
 </script>
 <style>
-.login-popup{
+.login-popup {
   width: 60vw;
-}</style>
+}
+</style>

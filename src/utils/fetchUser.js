@@ -13,7 +13,11 @@ const userRole = () => {
         localStorage.getItem("USER_ROLE") : localStorage.clear()
     return userInfo
 }
-export { userAccessToken, userInfoDetails, userRole }
+const userRoles = {
+    ADMIN: "ADMIN",
+    USER: "USER"
+}
+export { userAccessToken, userInfoDetails, userRole, userRoles }
 
 //     "ACCESS_TOKEN",
 // user.stsTokenManager.refreshToken

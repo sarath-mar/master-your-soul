@@ -12,7 +12,7 @@
         <!-- Masterclass I'll Share With You The Secrets On -->
       </h1>
       <div class="px-3">
-        <v-data-table :headers="headers" :items="desserts">
+        <v-data-table :headers="headers" :items="userList">
           <template v-slot:top>
             <v-toolbar flat color="white">
               <!-- <v-toolbar-title>My CRUD</v-toolbar-title> -->
@@ -36,27 +36,36 @@
 
                   <v-card-text>
                     <v-container>
-                      <v-row>
-                        <v-col cols="12">
-                          <v-text-field
-                            v-model="user.name"
-                            label="Name"
-                          ></v-text-field>
-                        </v-col>
-                        <v-col cols="12">
-                          <v-text-field
-                            v-model="user.email"
-                            label="Email"
-                          ></v-text-field>
-                        </v-col>
-                        <v-col cols="12">
-                          <v-text-field
-                            v-model="user.password"
-                            label="Password"
-                          ></v-text-field>
-                        </v-col>
-                      </v-row>
+                      <v-form ref="form" v-model="valid">
+                        <v-row>
+                          <v-col cols="12">
+                            <v-text-field
+                              v-model="name"
+                              label="Name"
+                              :rules="nameRule"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col cols="12">
+                            <v-text-field
+                              v-model="email"
+                              label="Email"
+                              :rules="emailRule"
+                            ></v-text-field>
+                          </v-col>
+                          <v-col cols="12">
+                            <v-text-field
+                              v-model="password"
+                              label="Password"
+                              :rules="passwordRule"
+                            ></v-text-field>
+                          </v-col>
+                        </v-row>
+                      </v-form>
                     </v-container>
+
+                    <p v-if="errorFromApi" class="red--text text-center mb-0">
+                      {{ errorFromApi }}
+                    </p>
                   </v-card-text>
 
                   <v-card-actions>
@@ -64,7 +73,14 @@
                     <v-btn color="blue darken-1" text @click="close"
                       >Cancel</v-btn
                     >
-                    <v-btn color="blue darken-1" text @click="save">Save</v-btn>
+                    <v-btn
+                      color="blue darken-1"
+                      :loading="btn_loading"
+                      text
+                      :disabled="!valid"
+                      @click="save"
+                      >Save</v-btn
+                    >
                   </v-card-actions>
                 </v-card>
               </v-dialog>
@@ -76,9 +92,9 @@
             </v-icon>
             <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
           </template>
-          <template v-slot:no-data>
+          <!-- <template v-slot:no-data>
             <v-btn color="primary" @click="initialize">Reset</v-btn>
-          </template>
+          </template> -->
         </v-data-table>
       </div>
     </div>
@@ -86,10 +102,28 @@
 </template>
 <script>
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { userCollection, doc, addDoc, Timestamp } from "@/firebase";
+import { query, where, getDocs, limit } from "firebase/firestore";
+import { userRole, userRoles } from "@/utils/fetchUser";
 
 export default {
   data: () => ({
     dialog: false,
+    btn_loading: false,
+    errorFromApi: "",
+    valid: true,
+    nameRule: [(v) => !!v || "Username should not be empty"],
+    passwordRule: [
+      (v) => !!v || "Password should not be empty",
+      (v) => v.length > 6 || "Password length should be greater than 6",
+    ],
+    emailRule: [
+      (v) => !!v || "Email should not be empty",
+      (v) =>
+        !v ||
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+        "E-mail must be valid",
+    ],
     headers: [
       {
         text: "Si No",
@@ -102,31 +136,29 @@ export default {
       { text: "Password", value: "password" },
       { text: "", value: "actions", align: "end" },
     ],
-    desserts: [
-      {
-        si_no: "1",
-        name: "Sarath",
-        email: "sarathbnm@gmail.com",
-        password: "Sarath871@",
-      },
-      {
-        si_no: "2",
-        name: "Sarath",
-        email: "sarathbnm@gmail.com",
-        password: "Sarath871@",
-      },
-      {
-        si_no: "3",
-        name: "Sarath",
-        email: "sarathbnm@gmail.com",
-        password: "Sarath871@",
-      },
+    userList: [
+      // {
+      //   si_no: "1",
+      //   name: "Sarath",
+      //   email: "sarathbnm@gmail.com",
+      //   password: "Sarath871@",
+      // },
+      // {
+      //   si_no: "2",
+      //   name: "Sarath",
+      //   email: "sarathbnm@gmail.com",
+      //   password: "Sarath871@",
+      // },
+      // {
+      //   si_no: "3",
+      //   name: "Sarath",
+      //   email: "sarathbnm@gmail.com",
+      //   password: "Sarath871@",
+      // },
     ],
-    user: {
-      name: "",
-      email: "",
-      password: "",
-    },
+    name: "",
+    email: "",
+    password: "",
     editedIndex: -1,
     editedItem: {
       name: "",
@@ -146,7 +178,7 @@ export default {
 
   computed: {
     formTitle() {
-      return this.editedIndex === -1 ? "New Item" : "Edit Item";
+      return this.editedIndex === -1 ? "New User" : "Edit Item";
     },
   },
 
@@ -157,20 +189,39 @@ export default {
   },
 
   created() {
-    // this.initialize();
+    this.getUserData(20);
   },
 
   methods: {
     editItem(item) {
-      this.editedIndex = this.desserts.indexOf(item);
-      this.editedItem = Object.assign({}, item);
-      this.dialog = true;
+      // this.editedIndex = this.desserts.indexOf(item);
+      // this.editedItem = Object.assign({}, item);
+      // this.dialog = true;
     },
 
     deleteItem(item) {
-      const index = this.desserts.indexOf(item);
-      confirm("Are you sure you want to delete this item?") &&
-        this.desserts.splice(index, 1);
+      // const index = this.desserts.indexOf(item);
+      // confirm("Are you sure you want to delete this item?") &&
+      //   this.desserts.splice(index, 1);
+    },
+    async getUserData(limitData) {
+      const q = query(userCollection, limit(limitData));
+      //  const q = query(userCollection, where("email", "==", user.email));
+
+      const userListData = await getDocs(q);
+      if (userListData.docs.lenght);
+      let index = limitData - 20;
+      userListData.forEach((doc) => {
+        let eachUser = {
+          si_no: index + 1,
+          id: doc.id,
+          ...doc.data(),
+        };
+        this.userList.push(eachUser);
+        index++;
+        // console.log(doc.id, " => ", doc.data());
+      });
+      console.log(this.userList);
     },
 
     close() {
@@ -181,40 +232,52 @@ export default {
       });
     },
 
-    save() {
-     let f=false
-     if(f){
+    async save() {
+      this.errorFromApi = "";
       this.btn_loading = true;
+      let user = {};
+      user.email = this.email.trim();
+      user.password = this.password.trim();
+      user.name = this.name.trim();
+      user.createdAt = Timestamp.now();
+
       const auth = getAuth();
-      console.log(auth);
-      let email = this.phone;
-      let password = this.password;
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-          this.btn_loading=false
+      createUserWithEmailAndPassword(auth, this.email, this.password)
+        .then(async (userCredential) => {
+          const userCreated = userCredential.user;
+          user.uid = userCreated.uid;
+          user.userType = userRoles.USER;
+          let data = await addDoc(userCollection, user);
+          if (!data) {
+            this.errorFromApi = "Adding User Failed";
+          }
+          this.btn_loading = false;
+          this.close();
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          let split = errorCode.split("/");
+          console.log(split);
           console.log(errorCode);
           console.log(errorMessage);
-          this.errorFromApi=errorMessage
-          this.btn_loading=false
+          console.log(split.length);
+          console.log(split[1]);
+          this.errorFromApi = split.length > 1 ? split[1] : errorCode;
+          this.btn_loading = false;
+          // this.close();
+
           // ..
         });
-     }
-      this.close();
     },
   },
 };
 </script>
 
 <style>
-  .v-data-table>.v-data-table__wrapper .v-data-table__mobile-table-row {
+.v-data-table > .v-data-table__wrapper .v-data-table__mobile-table-row {
   margin: 10px;
-  border: 1px solid #ededed; 
+  border: 1px solid #ededed;
   display: block;
 }
 .what-we {
@@ -250,7 +313,7 @@ export default {
 .divider-1 p {
   display: inline-block;
   height: 2px;
-  width: 160px; 
+  width: 160px;
   background-color: rgba(0, 0, 0, 0.1);
 }
 *,
