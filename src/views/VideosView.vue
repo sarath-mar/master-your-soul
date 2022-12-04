@@ -1,6 +1,6 @@
 <template>
-  <div class="mt-10">
-    <UnloggedUserVideo />
+  <div >
+    <UnloggedUserVideo class="user-video" />
   </div>
 </template>
 <script>
@@ -11,3 +11,8 @@ export default {
   },
 };
 </script>
+<style>
+.user-video {
+  margin-top: 6rem;
+}
+</style>

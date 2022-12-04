@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div>
-      <v-toolbar flat absolute class="toolbar" :height="navBarHeight">
+      <v-toolbar flat absolute :class="$route.name=='home' ?'toolbar' : 'toolbar-color'" :height="navBarHeight">
         <v-toolbar-title class="text-uppercase grey--text">
           <img
             src="../../../public/image/logo.png"
@@ -12,6 +12,8 @@
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
+        <!-- <p class="black--text ">{{JSON.parse(localStorage.getItem("USER_DETAILS"))}}</p> -->
+        <v-icon @click="logOut" class="float-right mr-5"> mdi-logout </v-icon>
         <!-- <v-app-bar-nav-icon
           class="mr-5 black"
           @click.stop="drawer = !drawer"
@@ -43,6 +45,7 @@
 </template>
 
 <script>
+import { getAuth, signOut } from '@firebase/auth';
 export default {
   name: "HelloWorld",
 
@@ -99,9 +102,18 @@ export default {
     close() {
       this.drawer = false;
     },
-    logout() {
-      localStorage.removeItem("ROLE_OF_USER");
-      this.$router.replace({ path: "/login" });
+    async logOut() {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+          localStorage.clear();
+          this.$router.replace({ path: "/" });
+        })
+        .catch((error) => {
+          // An error happened.
+          console.log(error);
+        });
     },
   },
 };
@@ -113,6 +125,10 @@ export default {
 }
 .toolbar {
   background-color: transparent !important;
+  width: 100vw;
+}
+.toolbar-color {
+  background-color: white !important;
   width: 100vw;
 }
 .theme--light.v-btn.v-btn--icon {

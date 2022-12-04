@@ -73,6 +73,7 @@
   </v-dialog>
 </template>
 <script>
+import { getDocs, query, where } from "@firebase/firestore";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { app, db, userCollection, doc, setDoc, addDoc } from "../../firebase";
 import { userInfoDetails } from "../../utils/fetchUser";
@@ -112,11 +113,20 @@ export default {
       signInWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
           this.errorFromApi = "";
-          const user = userCredential.user;
           let userRole = "USER";
-          if (ADMIN_ID.includes(user.uid)) {
-            userRole = "ADMIN";
+          const user = userCredential.user;
+          const q = query(userCollection, where("uid", "==", user.uid));
+
+          const querySnapshot = await getDocs(q);
+          if (querySnapshot.size === 1) {
+            querySnapshot.forEach((doc) => {
+              if (doc.data().userType === "ADMIN") {
+                userRole = "ADMIN";
+              }
+              console.log(doc.userType, " => ", doc.data());
+            });
           }
+          console.log("querySnapshot", querySnapshot);
           let userData = {
             accessToken: user.accessToken,
             uid: user.uid,
@@ -139,7 +149,7 @@ export default {
             userRole === "ADMIN"
               ? this.$router.replace({ path: "/admin" })
               : userRole === "USER"
-              ? this.$router.replace({ path: "/verify-video" })
+              ? this.$router.replace({ path: "/courses" })
               : this.$router.replace({ path: "/404-error" });
           } else {
             this.errorFromApi = "Not a valid user";

@@ -32,10 +32,10 @@
   </div>
 </template>
 <script>
-import LoginPage from "./LoginPage.vue";
+// import LoginPage from "./LoginPage.vue";
 export default {
   components: {
-    LoginPage,
+    // LoginPage,
   },
   data() {
     return {

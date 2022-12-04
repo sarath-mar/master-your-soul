@@ -1,6 +1,6 @@
 <template>
   <v-card class="tab-card">
-    <v-icon @click="logOut" class="float-right mr-5"> mdi-logout </v-icon>
+    
     <v-tabs v-model="tab" fixed-tabs icons-and-text>
       <v-tabs-slider></v-tabs-slider>
 
@@ -39,19 +39,7 @@ export default {
     };
   },
   methods: {
-    async logOut() {
-      const auth = getAuth();
-      signOut(auth)
-        .then(() => {
-          // Sign-out successful.
-          localStorage.clear();
-          this.$router.replace({ path: "/" });
-        })
-        .catch((error) => {
-          // An error happened.
-          console.log(error);
-        });
-    },
+    
   },
 };
 </script>
