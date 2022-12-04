@@ -4,10 +4,17 @@
       <v-spacer> </v-spacer>
       <!-- <add-video-url v-if="$route.name !== 'Video-Gallery'" /> -->
     </v-layout>
-    <v-layout wrap>
+    <v-layout wrap v-if="$vuetify.breakpoint.smAndUp">
       <span v-for="(post, index) in videoData" :key="index">
         <v-flex>
           <video-card :post="post" />
+        </v-flex>
+      </span>
+    </v-layout>
+    <v-layout wrap v-else justify-center>
+      <span v-for="(post, index) in videoData" :key="index">
+        <v-flex sm12>
+          <video-card :post="post" @updatePost="updatePost" />
         </v-flex>
       </span>
     </v-layout>
@@ -21,35 +28,26 @@ import { getAuth, onAuthStateChanged } from "@firebase/auth";
 //   import { videoCollection } from "../../firebase";
 import VideoCard from "./VideoCard.vue";
 import { videoCollection } from "@/firebase";
-import { limit, query ,getDocs} from '@firebase/firestore';
+import { limit, query, getDocs } from "@firebase/firestore";
 export default {
   components: { VideoCard },
+  props: {
+    updateData: {
+      required: true,
+    },
+  },
   data() {
     return {
-      videoData: [
-        {
-          video:
-            "https://firebasestorage.googleapis.com/v0/b/master-your-soul.appspot.com/o/videos%2FnJPr0kl1rq1uAWnX1WWC.mp4?alt=media&token=ee68d76e-85a7-4213-9985-3242b578f4ef",
-          postCaption: "Test Purpose 1",
-          postText: "lorem text",
-        },
-        // {
-        //   youtubeQueUrl: "https://youtu.be/9P9DiRpayFE",
-        //   postCaption: "Test Purpose 2",
-        //   postText: "lorem text",
-        // },
-        // {
-        //   youtubeQueUrl: "https://youtu.be/9P9DiRpayFE",
-        //   postCaption: "Test Purpose 3",
-        //   postText: "lorem text",
-        // },
-        // {
-        //   youtubeQueUrl: "https://youtu.be/9P9DiRpayFE",
-        //   postCaption: "Test Purpose 4",
-        //   postText: "lorem text",
-        // },
-      ],
+      videoData: [],
+      limitData: 20,
     };
+  },
+  watch: {
+    updateData: {
+      handler() {
+        this.getVideoData(this.limitData);
+      },
+    },
   },
   methods: {
     async getVideoData(limitData) {
@@ -81,12 +79,12 @@ export default {
 
       console.log(this.videoData);
     },
-    // updatePost() {
-    //   this.getvideoData();
-    // },
+    updatePost() {
+      this.getvideoData(this.limitData);
+    },
   },
   created() {
-    this.getVideoData(20);
+    this.getVideoData(this.limitData);
   },
 };
 </script>

@@ -2,10 +2,10 @@
   <div class="mb-5 pa-5">
     <div class="content-data">
       <div class="">
-        <span class="what-we-first">User Videos</span>
+        <!-- <span class="what-we-first">User Videos</span> -->
       </div>
 
-      <div class="divider"><p class="text-center"></p></div>
+      <!-- <div class="divider"><p class="text-center"></p></div> -->
       <h1 class="text-center">
         <!-- Masterclass I'll Share With You The Secrets On -->
       </h1>
@@ -90,7 +90,7 @@
             </v-card>
           </v-dialog>
         </v-toolbar>
-        <admin-video />
+        <admin-video :updateData="updateData" />
         <!-- </template> -->
         <!-- <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="editItem(item)">
@@ -117,6 +117,7 @@ export default {
   components: { AdminVideo },
   data: () => ({
     dialog: false,
+    updateData:false,
     btn_loading:false,
     errorFromApi: "",
     file: "",
@@ -235,7 +236,8 @@ export default {
                   this.dialog = false;
                   this.button_loading = false;
                   console.log("added finally");
-                  this.$emit("updatePost");
+                  this.updateData=true
+                  // this.$emit("updatePost");
                 })
                 .catch(() => {
                   this.button_loading = false;

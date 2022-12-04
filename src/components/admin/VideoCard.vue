@@ -2,13 +2,13 @@
   <v-hover v-slot="{ hover }" open-delay="200">
     <!-- {{post.youtubeQueUrl}}  -->
     <v-card
-      width="220"
+      min-width="220"
       :elevation="hover ? 25 : 2"
       :class="{ 'on-hover': hover }"
       :loading="loading"
       class="my-4 mx-4 ashColor cardClass"
     >
-    <!--         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      <!--         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
  -->
       <iframe
         width="100%"
@@ -29,17 +29,16 @@
       </v-card-text>
       <v-card-actions>
         <v-layout justify-center>
-          <!-- <delete-vidoe :post="post" @updatePost="updatePost" /> -->
-          <!-- <DeleteImage  />  -->
+          <delete-vidoe :post="post" @updatePost="updatePost" />
         </v-layout>
       </v-card-actions>
     </v-card>
   </v-hover>
 </template>
 <script>
-// import deleteVidoe from "./deleteVidoe.vue";
+import deleteVidoe from "./deleteVidoe.vue";
 export default {
-  //   components: { deleteVidoe },
+    components: { deleteVidoe },
   props: {
     post: {
       required: true,
@@ -53,10 +52,10 @@ export default {
     image: "",
   }),
   methods: {
-    // updatePost() {
-    //   console.log("root emit updated");
-    //   this.$emit("updatePost");
-    // },
+    updatePost() {
+      console.log("root emit updated");
+      this.$emit("updatePost");
+    },
   },
 };
 </script>

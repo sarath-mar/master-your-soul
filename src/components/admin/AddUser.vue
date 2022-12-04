@@ -2,12 +2,12 @@
   <div class="mb-5 pa-5">
     <div class="content-data">
       <div class="">
-        <span class="what-we-first">User Details</span>
+        <!-- <span class="what-we-first">User Details</span> -->
         <!-- <v-spacer></v-spacer> -->
         <!-- <v-btn class="float-right ">Videos</v-btn> -->
       </div>
 
-      <div class="divider-1"><p class="text-center"></p></div>
+      <!-- <div class="divider-1"><p class="text-center"></p></div> -->
       <h1 class="text-center">
         <!-- Masterclass I'll Share With You The Secrets On -->
       </h1>
