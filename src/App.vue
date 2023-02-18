@@ -36,7 +36,10 @@ export default {
     font-family: "montserrat-medium", sans-serif;
     /* --primary-text-color:rgb(225, 107, 52); */
     /* --primary-text-color:rgb(44,111,119); */
-    --primary-text-color:rgb(127,60,153);
+    /* --primary-text-color:rgb(127,60,153); */
+    /* --primary-text-color:rgb(26,168,176); */
+    --primary-text-color:rgb(230, 84, 106);
+    
     --primary-background-color:rgb(242,234,232);
   }
   .heading-font{

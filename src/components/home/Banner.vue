@@ -93,14 +93,16 @@ export default {
 .banner {
   /* background: url("../../../public/image/banner2.jpg"); */
   /* background-image: url("../../../public/image/banner.webp"); */
-  background-image: url("../../../public/image/gradient.jpg");
+  /* background-image: url("../../../public/image/gradient.jpg"); */
+  /* background-image: url("../../../public/image/lines.jpg"); */
   background-color: var(--primary-background-color);
   /* filter: blur(px); */
   /* opacity: .4; */
   width: 100vw;
   background-position: center;
-  background-size: cover;
-  background-blend-mode: color-burn;
+  /* background-size: cover; */
+  /* background-size: 400%; */
+  background-blend-mode: lighten;
   overflow: hidden;
   color: var(--primary-text-color);
   /* background-color: black; */
@@ -143,7 +145,7 @@ export default {
 }
 @media screen  and (max-width:600px){
   .welcome {
-    padding-top: 20vh;
+    padding-top: 15vh;
     /* min-height: 95vh; */
 
   }
@@ -151,7 +153,7 @@ export default {
     margin-top:10px;
   }
   .banner{
-    background-image: none;
+    /* background-image: none; */
   }
 }
 </style>

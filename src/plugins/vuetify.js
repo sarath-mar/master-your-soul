@@ -15,7 +15,7 @@ export default new Vuetify({
                 text_color:' #555555', 
                 background:'#f5f4f0 ',
                 primary_background_color:"#0f5d65",
-                primary_text_color:"#7f3c99",
+                primary_text_color:"#e6546a",
 
             },
         },
