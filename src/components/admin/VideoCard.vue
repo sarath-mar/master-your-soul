@@ -1,13 +1,7 @@
 <template>
   <v-hover v-slot="{ hover }" open-delay="200">
     <!-- {{post.youtubeQueUrl}}  -->
-    <v-card
-      min-width="220"
-      :elevation="hover ? 25 : 2"
-      :class="{ 'on-hover': hover }"
-      :loading="loading"
-      class="my-4 mx-4 ashColor cardClass"
-    >
+    <v-card :class="{ 'on-hover': hover }" :loading="loading" class="cardClass">
       <!--         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
  -->
       <iframe
@@ -38,7 +32,7 @@
 <script>
 import deleteVidoe from "./deleteVidoe.vue";
 export default {
-    components: { deleteVidoe },
+  components: { deleteVidoe },
   props: {
     post: {
       required: true,
@@ -62,9 +56,15 @@ export default {
 <style>
 .cardClass:hover {
   cursor: pointer;
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 .cardClass {
   transition: transform 0.2s;
+  background-color: rgb(234, 242, 242) !important;
+  padding: 10px;
+  position: relative;
+}
+iframe {
+
 }
 </style>

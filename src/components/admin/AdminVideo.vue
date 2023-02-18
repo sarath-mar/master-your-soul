@@ -4,7 +4,7 @@
       <v-spacer> </v-spacer>
       <!-- <add-video-url v-if="$route.name !== 'Video-Gallery'" /> -->
     </v-layout>
-    <v-layout wrap v-if="$vuetify.breakpoint.smAndUp">
+    <!-- <v-layout wrap v-if="$vuetify.breakpoint.smAndUp">
       <span v-for="(post, index) in videoData" :key="index">
         <v-flex>
           <video-card :post="post" />
@@ -17,7 +17,18 @@
           <video-card :post="post" @updatePost="updatePost" />
         </v-flex>
       </span>
-    </v-layout>
+    </v-layout> -->
+    <div
+      :class="
+        videoData.length > 2 || !$vuetify.breakpoint.smAndUp
+          ? 'video-card'
+          : 'video-card-mob'
+      "
+    >
+      <span v-for="(post, index) in videoData" :key="index">
+        <video-card :post="post" @updatePost="updatePost" />
+      </span>
+    </div>
   </v-container>
 </template>
 
@@ -89,4 +100,15 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+.video-card {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.video-card-mob {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, 300px); 
+}
+</style>

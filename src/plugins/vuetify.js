@@ -13,7 +13,10 @@ export default new Vuetify({
                 accent: '#8c9eff',
                 error: '#b71c1c',
                 text_color:' #555555', 
-                background:'#f5f4f0 '
+                background:'#f5f4f0 ',
+                primary_background_color:"#0f5d65",
+                primary_text_color:"#7f3c99",
+
             },
         },
     },

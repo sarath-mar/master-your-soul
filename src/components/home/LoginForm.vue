@@ -9,7 +9,6 @@
       <v-btn
         x-large
         outlined
-        color="white"
         class="button"
         dark
         v-bind="attrs"

@@ -9,56 +9,48 @@
                     allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen
                   ></iframe> -->
-    <template>
-      <v-container class="pa-4 text-center">
-        <!-- <v-row > -->
-        <v-card
-          class="px-3 video-card my-8"
-          width="100%"
+    <!-- <template> -->
+    <div class="">
+      <h1 class="text-center primary--text helo-sub">
+        BECOME A HEALING FACILITATOR & LEARN POWERFUL TOOLS
+      </h1>
+    </div>
+    <div class="pa-14">
+      <v-row>
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          lg="3"
           v-for="(item, i) in videoData"
           :key="i"
         >
-          <v-row class="fill-height" align="center " justify="center">
-            <v-col cols="12" sm="12" md="4">
-              <iframe
-                width="100%"
-                height="100%"
-                :src="item.postUrl"
-                frameborder="0"
-                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </v-col>
-            <v-col cols="12" sm="12" md="8">
-              <div class="pa-5">
-                <p
-                  :class="
-                    $vuetify.breakpoint.smAndUp ? ' text-left ' : 'text-class'
-                  "
-                >
-                  <!-- green pa-2 rounded-tr-xl -->
-                  <span class="text-title font-weight-bold">
-                    {{ item.title }}</span
-                  >
-                </p>
-                <p
-                  class="ma-0 text-body-1 font-italic"
-                  :class="
-                    $vuetify.breakpoint.smAndUp ? ' text-left ' : 'text-class'
-                  "
-                >
-                  <span
-                    class="yellow pa-2 rounded-tr-xl rounded-bl-xl text-descriptin"
-                  >
-                    {{ item.description }}</span
-                  >
-                </p>
-              </div>
-            </v-col>
-          </v-row>
-        </v-card>
-      </v-container>
-    </template>
+          <v-card>
+            <div class="card-content">
+              <h1 class="text-title font-weight-bold">
+                {{ item.title }}
+              </h1>
+              <p
+                class="ma-0 mt-5 text-body-1 font-italic"
+                :class="
+                  $vuetify.breakpoint.smAndUp ? ' text-left ' : 'text-class'
+                "
+              >
+                <!-- yellow pa-2 rounded-tr-xl rounded-bl-xl -->
+                <span class="text-descriptin"> {{ item.description }}</span>
+              </p>
+            </div>
+            <div class="text-center button-div">
+              <v-btn class="primary"> view </v-btn>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+
+      <!-- <h1>Counter : {{ counter }}</h1>
+      <button @click="add">Add</button> -->
+    </div>
+    <!-- </template> -->
   </div>
 </template>
 <script>
@@ -70,9 +62,13 @@ export default {
     limitData: 20,
     videoData: [],
     transparent: "rgba(255, 255, 255, 0)",
+    counter: 0,
   }),
 
   methods: {
+    // add(){
+    //   this.counter++;
+    // },
     async getVideoData(limitData) {
       this.videoData = [];
       const auth = getAuth();
@@ -106,12 +102,27 @@ export default {
 .helo {
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1.1;
+  /* line-height: 1.1; */
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+.card-content {
+  min-height: 310px;
+}
+.helo-sub {
+  font-size: 2rem;
+  font-weight: 600;
+  /* line-height: 1.1; */
   text-transform: uppercase;
   letter-spacing: 0.25rem;
 }
 .v-card {
   transition: opacity 0.4s ease-in-out;
+  padding: 20px;
+  transition: 0.5s;
+}
+.v-card:hover {
+  transform: scale(1.05);
 }
 
 .v-card:not(.on-hover) {
@@ -126,9 +137,10 @@ export default {
   /* padding:10px */
 }
 .text-descriptin {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
 .text-title {
-  font-size: 2.1rem;
+  font-size: 1.5rem;
+  text-align: center;
 }
 </style>

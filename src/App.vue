@@ -34,6 +34,10 @@ export default {
     /* font-family: 'Poppins', sans-serif; */
     /* font-family: 'Merienda', cursive; */
     font-family: "montserrat-medium", sans-serif;
+    /* --primary-text-color:rgb(225, 107, 52); */
+    /* --primary-text-color:rgb(44,111,119); */
+    --primary-text-color:rgb(127,60,153);
+    --primary-background-color:rgb(242,234,232);
   }
   .heading-font{
     font-size: 2rem;
@@ -42,7 +46,8 @@ export default {
   }
   .nav{
     position: -webkit-sticky; /* for Safari */
-    position: sticky;
+    /* position: sticky;  */
+    /* uncomment for sticky position */
     top: 0px;;
     z-index: 4;
   }

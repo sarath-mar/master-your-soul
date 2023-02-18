@@ -124,6 +124,7 @@ export default {
   align-items: flex-end;
 }
 .toolbar {
+  /* background-color: var(--primary-text-color) !important; */
   background-color: transparent !important;
   width: 100vw;
 }
