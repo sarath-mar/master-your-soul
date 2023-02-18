@@ -13,7 +13,7 @@
 
         <v-spacer></v-spacer>
         <!-- <p class="black--text ">{{JSON.parse(localStorage.getItem("USER_DETAILS"))}}</p> -->
-        <v-icon @click="logOut" class="float-right mr-5"> mdi-logout </v-icon>
+        <v-icon v-if="!$route.name=='home'" @click="logOut" class="float-right mr-5"> mdi-logout </v-icon>
         <!-- <v-app-bar-nav-icon
           class="mr-5 black"
           @click.stop="drawer = !drawer"
