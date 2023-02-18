@@ -143,7 +143,15 @@ export default {
 }
 @media screen  and (max-width:600px){
   .welcome {
-    padding-top: 10vh;
+    padding-top: 20vh;
+    /* min-height: 95vh; */
+
+  }
+  .welcome-social{
+    margin-top:10px;
+  }
+  .banner{
+    background-image: none;
   }
 }
 </style>
