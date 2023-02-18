@@ -2,13 +2,13 @@
   <v-app> 
     <navigation-bar  class="nav"/>
     <v-main>
-       <v-sheet
+       <!-- <v-sheet
         id="scrolling-techniques-7"
         class="overflow-y-auto"
         
-      >
+      > -->
       <router-view />
-       </v-sheet>
+       <!-- </v-sheet> -->
     </v-main>
     <footer-layout/> 
   </v-app>
@@ -38,7 +38,7 @@ export default {
     /* --primary-text-color:rgb(44,111,119); */
     /* --primary-text-color:rgb(127,60,153); */
     /* --primary-text-color:rgb(26,168,176); */
-    --primary-text-color:rgb(230, 84, 106);
+    --primary-text-color:rgb(248,97,94);
     
     --primary-background-color:rgb(242,234,232);
   }
@@ -50,8 +50,9 @@ export default {
   .nav{
     position: -webkit-sticky; /* for Safari */
     /* position: sticky;  */
+    position: sticky;
     /* uncomment for sticky position */
-    top: 0px;;
+    top:0px;;
     z-index: 4;
   }
 

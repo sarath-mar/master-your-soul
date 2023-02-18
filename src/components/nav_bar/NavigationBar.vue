@@ -1,26 +1,38 @@
 <template>
-  <nav>
-    <div>
-      <v-toolbar flat absolute :class="$route.name=='home' ?'toolbar' : 'toolbar-color'" :height="navBarHeight">
-        <v-toolbar-title class="text-uppercase grey--text">
-          <img
-            src="../../../public/image/logo.png"
-            class="mt-6"
-            width="110px"
-            alt=""
-          />
-        </v-toolbar-title>
+  <div>
+    <nav>
+      <div>
+        <v-toolbar
+          flat
+          absolute
+          :class="$route.name == 'home' ? 'toolbar' : 'toolbar-color'"
+          :height="navBarHeight"
+        >
+          <v-toolbar-title class="text-uppercase grey--text">
+            <img
+              src="../../../public/image/logo.png"
+              class="mt-6"
+              width="110px"
+              alt=""
+            />
+          </v-toolbar-title>
 
-        <v-spacer></v-spacer>
-        <!-- <p class="black--text ">{{JSON.parse(localStorage.getItem("USER_DETAILS"))}}</p> -->
-        <v-icon v-if="!$route.name=='home'" @click="logOut" class="float-right mr-5"> mdi-logout </v-icon>
-        <!-- <v-app-bar-nav-icon
-          class="mr-5 black"
-          @click.stop="drawer = !drawer"
-        ></v-app-bar-nav-icon> -->
-      </v-toolbar>
-    </div>
-    <!-- <v-navigation-drawer v-model="drawer" floating absolute temporary  >
+          <v-spacer></v-spacer>
+          <!-- <p class="black--text ">{{JSON.parse(localStorage.getItem("USER_DETAILS"))}}</p> -->
+          <v-icon
+            v-if="!$route.name == 'home'"
+            @click="logOut"
+            class="float-right mr-5"
+          >
+            mdi-logout
+          </v-icon>
+          <v-app-bar-nav-icon
+            class="mr-5 primary_text_color"
+            @click.stop="drawer = !drawer"
+          ></v-app-bar-nav-icon>
+        </v-toolbar>
+      </div>
+      <v-navigation-drawer v-model="drawer" floating absolute temporary>
         <v-layout justify-end>
           <v-icon @click="close" class="white">mdi-close</v-icon>
         </v-layout>
@@ -40,12 +52,13 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
-      </v-navigation-drawer> -->
-  </nav>
+      </v-navigation-drawer>
+    </nav>
+  </div>
 </template>
 
 <script>
-import { getAuth, signOut } from '@firebase/auth';
+import { getAuth, signOut } from "@firebase/auth";
 export default {
   name: "HelloWorld",
 
@@ -135,7 +148,7 @@ export default {
 .theme--light.v-btn.v-btn--icon {
   color: white;
 }
-img{
+img {
   /* background-color:white; */
 }
 </style>
