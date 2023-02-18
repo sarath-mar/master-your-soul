@@ -145,7 +145,7 @@ export default {
 }
 @media screen  and (max-width:600px){
   .welcome {
-    padding-top: 10vh;
+    padding-top: 6vh;
     /* min-height: 95vh; */
 
   }

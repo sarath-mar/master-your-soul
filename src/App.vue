@@ -48,9 +48,10 @@ export default {
     font-family: 'Merienda', cursive;
   }
   .nav{
-    position: -webkit-sticky; /* for Safari */
+    /* position: -webkit-sticky; */
+     /* for Safari */
     /* position: sticky;  */
-    position: sticky;
+    /* position: sticky; */
     /* uncomment for sticky position */
     top:0px;;
     z-index: 4;

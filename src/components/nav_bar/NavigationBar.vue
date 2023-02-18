@@ -22,12 +22,12 @@
           <v-icon
             v-if="!$route.name == 'home'"
             @click="logOut"
-            class="float-right mr-5"
+            class="float-right mr-"
           >
             mdi-logout
           </v-icon>
           <v-app-bar-nav-icon
-            class="mr-5 primary_text_color"
+            class="mr-2 primary_text_color"
             @click.stop="drawer = !drawer"
           ></v-app-bar-nav-icon>
         </v-toolbar>
