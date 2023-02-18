@@ -150,7 +150,7 @@ export default {
 
   }
   .welcome-social{
-    margin-top:10px;
+    margin-top:25px;
   }
   .banner{
     /* background-image: none; */
