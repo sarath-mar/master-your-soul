@@ -9,7 +9,7 @@
         elevation="8"
         tile
         dark
-        class="primary lighten-1 white--text text-center pt-10"
+        class="primary darken-1 white--text text-center pt-10"
       >
         <v-card-text>
           <a
