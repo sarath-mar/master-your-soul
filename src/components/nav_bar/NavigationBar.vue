@@ -27,7 +27,7 @@
             mdi-logout
           </v-icon>
           <v-app-bar-nav-icon
-            class="mr-2 primary_text_color"
+            class="mr-2 primary"
             @click.stop="drawer = !drawer"
           ></v-app-bar-nav-icon>
         </v-toolbar>

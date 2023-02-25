@@ -8,7 +8,7 @@
           Meditation Techniques.
         </h1>
         <div class="mt-10">
-          <v-btn color="primary_text_color" x-large outlined class="mr-8">
+          <v-btn color="primary" x-large outlined class="mr-8">
             JOIN NOW
           </v-btn>
           <LoginForm />
@@ -58,40 +58,35 @@ export default {
   components: { LoginForm },
 };
 </script>
-<style>
+<style scoped>
 /*  */
 
 .main {
-  background-color: var(--primary-background-color);
-
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10vh 5vw;
+  padding: 15vh 5vw;
   background-image: url("../../../public/image/home-bg.jpg");
-
-  /* padding: 30px; */
-  color: var(--primary-text-color);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--primary);
 }
 .content-main {
   flex: 1.5;
-  /* background-color: red; */
 }
 .img-content-main {
   flex: 1;
-  /* background-color: green; */
 }
 .content-main p {
-  font-family: "montserrat-medium", sans-serif;
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
 }
 .content-main h1 {
-  font-family: "montserrat-medium", sans-serif;
-  font-size: 2em;
+  font-size: 3em;
   line-height: 1.333;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
   margin-top: 0;
 }
 .banner-round-image {
@@ -100,7 +95,6 @@ export default {
   background-size: contain;
   background-position: center;
   position: relative;
-  /* width: calc(100% - 10px); */
 }
 .banner-round-image .banner-round {
   position: relative;
@@ -114,9 +108,7 @@ export default {
   height: 90%;
   width: 90%;
 }
-.button {
-  background-color: var(--primary-text-color);
-}
+
 @keyframes infiniteRotate {
   0% {
     transform: rotate(0deg);
@@ -153,7 +145,7 @@ export default {
   .content-main h1 {
     font-size: 1.8em;
     line-height: 1.333;
-    font-weight: 600 !important;
+    font-weight: 600;
   }
 }
 </style>

@@ -1,17 +1,23 @@
 <template>
-  <div class="mb-5 about-us pa-5">
-    <div class="content">
-    <p class="helo text-center">Hello There</p>
-    <h1 class="we-are text-center">We Are Master Your Soul</h1>
-    <div class="divider text-center"><p class="text-center"></p></div>
-    <p class="description text-center ">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam illo
-      veritatis mollitia nulla earum odit ea ipsum repudiandae animi accusamus
-      veniam molestias, officia consectetur? Minus, accusantium in! Quibusdam,
-      distinctio magnam!
-    </p>
+  <div class="about-us">
+    <div class="about-one">
+      <img src="../../../public/image/yoga_pose.png" alt="" />
+    </div>
+    <div class="about-two">
+      <h1 class="primary--text about">About us</h1>
+      <h1 class="side-heading">
+        Rise Up Your Inner Happinnes To The Next Level With Us
+      </h1>
+      <p class="paragraph">
+        Master Your Soul is curated by certified Theta and Reiki healer AnaghaZ.
+        What began as a quest for exploration and self-actualization, has
+        brought her to the path of sharing her knowledge and helping others live
+        their best life. Her healing techniques are not limited to one school of
+        thought as it combines aspects Spirituality, Theta healing, Reiki,
+        Ancestral healing & Raja Yoga
+      </p>
+    </div>
   </div>
-</div>
 </template>
 <script>
 export default {
@@ -23,46 +29,58 @@ export default {
 </script>
 <style>
 .about-us {
-  background-color: #39b54a;
-  min-height: 100vh;
-  width: 100vw;
+  padding: 5vh 5vw;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  
 }
-.content{
-  margin:0px 5vw;
-  /* background: red; */
+.about-one {
+  flex: 1;
 }
-.helo {
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: 0.25rem;
+.about-one img{
+  height: 100%;
+  width: 100%;
 }
-.we-are {
-  color: white;
-  font-size: 3.2rem;
+.about-two {
+  flex: 1;
 }
-.description{
-  padding: 10px;
+.about-two .about {
   font-size: 1.5rem;
-  /* line-height: 1.1; */
+  letter-spacing: 0.2rem;
+}
+.about-two .side-heading {
+  margin-top: 20px;
+  font-size: 2.5rem;
+  letter-spacing: 0.2rem;
+}
+.about-two .paragraph{
+  margin-top: 20px;
+  font-size: 1.5rem;
 }
 .divider::before {
-
 }
-.divider p{
+.divider p {
   display: inline-block;
   height: 2px;
   width: 40vw;
   background-color: rgba(0, 0, 0, 0.1);
 }
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: inherit;
 }
-/* #39B54A */
+@media screen and (max-width: 600px){
+  .about-us {
+    flex-direction: column;
+  }
+  .about-two .side-heading {
+    margin-top: 20px;
+    font-size: 1.8em;
+    line-height: 1.333;
+  }
+  .about-two .paragraph{
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+  }
+}
 </style>

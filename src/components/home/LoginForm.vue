@@ -1,25 +1,13 @@
 <template>
-  <v-dialog
-    persistent
-    transition="dialog-bottom-transition"
-    class="login-popup"
-    max-width="400"
-  >
+  <v-dialog persistent class="login-popup" max-width="350">
     <template v-slot:activator="{ on, attrs }">
-      <v-btn
-        x-large
-        outlined
-        class="button"
-        dark
-        v-bind="attrs"
-        v-on="on"
-      >
+      <v-btn x-large class="button" color="primary" v-bind="attrs" v-on="on">
         LOGIN
       </v-btn>
     </template>
     <template v-slot:default="dialog">
       <v-card>
-        <v-toolbar color="#39b54a" dark>Login</v-toolbar>
+        <v-toolbar color="primary" dark>Login</v-toolbar>
         <v-card-text>
           <v-form ref="form" v-model="valid">
             <v-layout class="mt-10">
@@ -51,7 +39,7 @@
             <v-layout justify-center class="ms-n3">
               <v-btn
                 depressed
-                color="ashColor"
+                color="primary"
                 class="white--text ml-3 font-weight-light"
                 @click="onSubmit"
                 :loading="btn_loading"
@@ -213,6 +201,6 @@ export default {
 </script>
 <style>
 .login-popup {
-  width: 60vw;
+  width: 60px;
 }
 </style>
