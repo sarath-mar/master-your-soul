@@ -7,7 +7,7 @@
           Learn How To Transform To State Of Bliss Using Unique Healing And
           Meditation Techniques.
         </h1>
-        <div class="mt-10">
+        <div class="mt-10 login-join" >
           <v-btn color="primary" x-large outlined class="mr-8">
             JOIN NOW
           </v-btn>
@@ -88,6 +88,9 @@ export default {
   font-weight: 500;
   letter-spacing: 0.1rem;
   margin-top: 0;
+}
+.login-join{
+  display: flex;
 }
 .banner-round-image {
   background-image: url("../../../public/image/round.png");
