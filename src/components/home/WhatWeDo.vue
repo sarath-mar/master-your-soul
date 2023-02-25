@@ -1,41 +1,18 @@
 <template>
-  <div class="mb-5 what-we pa-5">
-    <div class="content">
-      <p class="what-we-first text-center">What We Do</p>
-      <h1 class="we-do-for text-center">
-        Learn How To Transform To State Of Bliss Using Unique Healing And
-        Meditation Techniques
-      </h1>
-      <div class="divider text-center"><p class="text-center"></p></div>
-      <h1 class="text-center">
-        Masterclass I'll Share With You The Secrets On
-      </h1>
-      <div class="list-data mt-5">
-        <v-row class="">
-          <v-col cols="12" sm="6">
-            <span v-for="data in masterClassDataFirst" :key="data">
-              <v-card  elevation="7" class="pa-3 pt-6 mt-5 ">
-                <p>
-                  {{ data }}
-                </p>
-              </v-card>
-            </span>
-          </v-col>
-          <v-col cols="12" sm="6">
-            <span v-for="data in masterClassDataSecond" :key="data">
-              <v-card elevation="7" class="pa-3 pt-6 mt-5">
-                <p>
-                  {{ data }}
-                </p>
-              </v-card>
-            </span>
-          </v-col>
-
-          <!-- <v-col cols="12" class="green ">
-       <p>How to be least affected by challenging situations in your life.</p> 
-      </v-col> -->
-        </v-row>
-      </div>
+  <div class="what-we">
+    <p class="course text-center primary--text">Courses</p>
+    <h1 class="we-do-for">
+      Learn How To Transform To State Of Bliss Using Unique Healing And
+      Meditation Techniques
+    </h1>
+    <div class="list-data mt-5">
+      <span v-for="data in masterClassDataFirst" :key="data">
+        <v-card elevation="7" class="card">
+          <p>
+            {{ data }}
+          </p>
+        </v-card>
+      </span>
     </div>
   </div>
 </template>
@@ -72,53 +49,28 @@ export default {
 </script>
 <style>
 .what-we {
-  /* background-color: #39b54a; */
-  min-height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: black;
+  background-color: var(--secondary);
+  padding: 5vh 5vw;
 }
-.what-we-first {
+.course {
+  font-size: 1.5rem;
+  letter-spacing: 0.2rem;
+}
+.list-data  {
   font-size: 1rem;
   font-weight: 600;
-  line-height: 1.1;
-  text-transform: uppercase;
-  letter-spacing: 0.25rem;
-  color: #39b54a;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+  gap: 20px;
+}
+.card{
+  min-height: 200px;
 }
 .we-do-for {
-  font-size: 3rem;
-  color: black;
+  margin-top: 20px;
+  font-size: 2.5rem;
+  letter-spacing: 0.2rem;
 }
-.description {
-  padding: 10px;
-  font-size: 1.5rem;
-  /* line-height: 1.1; */
-}
-.divider p {
-  display: inline-block;
-  height: 2px;
-  width: 40vw;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-*,
-::before,
-::after {
-  box-sizing: inherit;
-}
-ul {
-  list-style: none;
-}
-.list-data p {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #39b54a;
-}
-v-card{
- background-color: #39b54a !important; 
-}
+
 /* #39B54A */
 </style>

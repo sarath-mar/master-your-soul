@@ -1,14 +1,14 @@
 <template>
-  <v-dialog persistent class="login-popup" max-width="350">
+  <v-dialog  class="login-popup " width="auto">
     <template v-slot:activator="{ on, attrs }">
       <v-btn x-large class="button" color="primary" v-bind="attrs" v-on="on">
         LOGIN
       </v-btn>
     </template>
     <template v-slot:default="dialog">
-      <v-card>
+      <v-card >
         <v-toolbar color="primary" dark>Login</v-toolbar>
-        <v-card-text>
+        <v-card-text >
           <v-form ref="form" v-model="valid">
             <v-layout class="mt-10">
               <v-flex>
