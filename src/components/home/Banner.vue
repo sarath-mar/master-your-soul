@@ -1,57 +1,35 @@
 <template>
-  <!-- <v-carousel
-      elevation="12"
-      cycle
-      hide-delimiter-background
-      show-arrows-on-hover
-      height="78vh"
-      class="mt-n1 rounded-xl"
-    >
-      <v-carousel-item
-        v-for="(item, i) in slides"
-        :key="i"
-        :src="require(`../../../public/image/${item.src}`)"
-        reverse-transition="fade-transition"
-        transition="fade-transition"
-        elevation="12"
-      >
-      </v-carousel-item>
-    </v-carousel> -->
-  <div class="banner">
-    <div class="banner-image">
-      <div class="welcome">
-        <v-row>
-          <v-col cols="12" sm="8" class="ml-auto">
-            <div class="pa-5">
-              <p>Welcome to Master Your Soul</p>
-              <h1>
-                <!-- We are a creative group of people who design influential -->
-                Learn How To Transform To State Of Bliss Using Unique Healing
-                And Meditation Techniques.
-              </h1>
-              <div class="mt-10">
-                <v-btn color="primary_text_color" x-large outlined class="mr-8"  >
-                  JOIN NOW
-                </v-btn>
-                <LoginForm />
-                <!-- <v-btn x-large outlined color="white" class="button" dark>
-                  LOGIN 
-                </v-btn> -->
-              </div>
-            </div>
-          </v-col>
-          <v-col cols="12" sm="2" class="ml-auto">
-            <div class="welcome-social float-right pa-5">
-              <ul class="d-flex d-sm-block">
-                <li><v-icon large> mdi-facebook </v-icon></li>
-                <li><v-icon large> mdi-instagram </v-icon></li>
-                <li><v-icon large> mdi-youtube </v-icon></li>
-              </ul>
-            </div>
-          </v-col>
-        </v-row>
+  <div class="main">
+    <div class="content-main">
+      <div class="pa-5">
+        <p>Welcome to Master Your Soul</p>
+        <h1>
+          Learn How To Transform To State Of Bliss Using Unique Healing And
+          Meditation Techniques.
+        </h1>
+        <div class="mt-10">
+          <v-btn color="primary_text_color" x-large outlined class="mr-8">
+            JOIN NOW
+          </v-btn>
+          <LoginForm />
+        </div>
       </div>
-      <!-- <img src="../../../public/image/banner.webp" alt="" /> -->
+    </div>
+    <div class="img-content-main">
+      <div>
+        <div class="banner-round-image">
+          <img
+            class="banner-round"
+            src="../../../public/image/home-design.png"
+            alt=""
+          />
+          <img
+            class="banner-round-second"
+            src="../../../public/image/yoga_pose1.png"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -81,61 +59,73 @@ export default {
 };
 </script>
 <style>
-/* .carousel{
-        height: 90vh !important;
-    } */
-.button {
-  /* border: red !important;; */
-  /* border: 4px red !important;  */
-  /* color: var(--primary-text-color);   */
-  background-color: var(--primary-text-color);
-}
-.banner {
-  /* background: url("../../../public/image/banner2.jpg"); */
-  /* background-image: url("../../../public/image/banner.webp"); */
-  /* background-image: url("../../../public/image/gradient.jpg"); */
-  /* background-image: url("../../../public/image/lines.jpg"); */
+/*  */
+
+.main {
   background-color: var(--primary-background-color);
-  /* filter: blur(px); */
-  /* opacity: .4; */
-  width: 100vw;
-  background-position: center;
-  /* background-size: cover; */
-  /* background-size: 400%; */
-  background-blend-mode: lighten;
-  overflow: hidden;
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10vh 5vw;
+  background-image: url("../../../public/image/home-bg.jpg");
+
+  /* padding: 30px; */
   color: var(--primary-text-color);
-  /* background-color: black; */
 }
-.welcome p {
+.content-main {
+  flex: 1.5;
+  /* background-color: red; */
+}
+.img-content-main {
+  flex: 1;
+  /* background-color: green; */
+}
+.content-main p {
   font-family: "montserrat-medium", sans-serif;
   font-size: 1rem;
-  /* color: rgba(255, 255, 255, 0.5); */
   text-transform: uppercase;
   letter-spacing: 0.3rem;
 }
-.welcome h1 {
+.content-main h1 {
   font-family: "montserrat-medium", sans-serif;
   font-size: 2em;
   line-height: 1.333;
   margin-top: 0;
-  /* color: #ffffff; */
 }
-.welcome {
-  /* filter: brightness(100%); */
-  /* opacity:1; */
-  /* position: relative; */
-  /* top: 25vh; */
-  padding-top: 5vh;
-  min-height: 100vh;
-  /* background-color: red; */
-  display: flex;
-  align-items: center;
-  /* color: white; */
-  /* width: 100vw; */
-  /* width: 50vw;
-  margin-left: 10vw; */
+.banner-round-image {
+  background-image: url("../../../public/image/round.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  /* width: calc(100% - 10px); */
 }
+.banner-round-image .banner-round {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  animation: infiniteRotate infinite 20s linear;
+}
+.banner-round-second {
+  position: absolute;
+  left: 30px;
+  height: 90%;
+  width: 90%;
+}
+.button {
+  background-color: var(--primary-text-color);
+}
+@keyframes infiniteRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .welcome-social ul {
   list-style: none;
 }
@@ -143,17 +133,27 @@ export default {
   padding: 5px;
   cursor: pointer;
 }
-@media screen  and (max-width:600px){
-  .welcome {
-    padding-top: 6vh;
-    /* min-height: 95vh; */
-
+@media screen and (max-width: 600px) {
+  .main {
+    flex-direction: column;
+    padding-top: 15vh;
+    text-align: center;
   }
-  .welcome-social{
-    margin-top:25px;
+  .banner-round-image {
+    margin-top: 20px;
+    height: 350px;
   }
-  .banner{
-    /* background-image: none; */
+  .banner-round-second {
+    left: 20px;
+  }
+  .content-main p {
+    font-size: 0.8rem;
+    letter-spacing: 0.3rem;
+  }
+  .content-main h1 {
+    font-size: 1.8em;
+    line-height: 1.333;
+    font-weight: 600 !important;
   }
 }
 </style>
