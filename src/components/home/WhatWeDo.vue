@@ -6,13 +6,16 @@
       Meditation Techniques
     </h1>
     <div class="list-data mt-5">
-      <span v-for="data in masterClassDataFirst" :key="data">
-        <v-card elevation="7" class="card">
+      <div v-for="data in masterClassDataFirst" :key="data">
+        <v-card elevation="7" class="card-main">
           <p>
             {{ data }}
           </p>
+          <div>
+            
+          </div>
         </v-card>
-      </span>
+      </div>
     </div>
   </div>
 </template>
@@ -27,9 +30,6 @@ export default {
       "How you can start loving yourself more and what you can gain from it.",
 
       "How to bring harmony into your life.",
-
-      "How to be the creator of your life.",
-      "To be a happy cool wonder human being where people will want to be like you.",
     ],
     masterClassDataSecond: [
       "How to convert the challenges into possibilities.",
@@ -39,10 +39,6 @@ export default {
       "How to stay neutral in difficult situations.",
 
       "Who you are and the infinite energy you have.",
-
-      "Healing your traumas and to start manifesting your dreams.",
-
-      "Upgrading your life style just by creating a structure in your life.",
     ],
   }),
 };
@@ -63,13 +59,23 @@ export default {
   grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
   gap: 20px;
 }
-.card{
+.card-main{
   min-height: 200px;
+  padding:10px
 }
 .we-do-for {
   margin-top: 20px;
   font-size: 2.5rem;
   letter-spacing: 0.2rem;
+}
+@media screen and (max-width: 600px){
+ 
+  .we-do-for  {
+    margin-top: 20px;
+    font-size: 1.8em;
+    text-align: center;
+  }
+ 
 }
 
 /* #39B54A */

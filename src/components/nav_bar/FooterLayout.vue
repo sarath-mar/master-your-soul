@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10">
+  <div >
     <!-- <v-layout justify-center>
       <v-card class="card" height="50vh" width="70%"> </v-card>
     </v-layout> -->
@@ -9,7 +9,7 @@
         elevation="8"
         tile
         dark
-        class="green lighten-1 white--text text-center"
+        class="primary lighten-1 white--text text-center pt-10"
       >
         <v-card-text>
           <a
