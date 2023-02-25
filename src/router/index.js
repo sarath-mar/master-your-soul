@@ -8,7 +8,8 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    children: []
   },
   {
     path: '/about',
@@ -16,7 +17,8 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+    
   },
   {
     path: '/videos',
@@ -24,7 +26,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/VideosView.vue') 
+    component: () => import(/* webpackChunkName: "about" */ '../views/VideosView.vue')
   },
   {
     path: '/post',
@@ -32,7 +34,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/PostView.vue')  
+    component: () => import(/* webpackChunkName: "about" */ '../views/PostView.vue')
   },
   {
     path: '/admin',
@@ -40,7 +42,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AdminView.vue')  
+    component: () => import(/* webpackChunkName: "about" */ '../views/AdminView.vue')
   },
   {
     path: '/courses',
@@ -48,7 +50,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/LoggedUserVideoView.vue')  
+    component: () => import(/* webpackChunkName: "about" */ '../views/LoggedUserVideoView.vue')
   },
   {
     path: '/404-error',
@@ -56,7 +58,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../components/Error/Error404.vue')  
+    component: () => import(/* webpackChunkName: "about" */ '../components/Error/Error404.vue')
   }
 ]
 

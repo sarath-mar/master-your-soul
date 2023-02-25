@@ -71,7 +71,7 @@ export default {
     roleData: localStorage.getItem("ROLE_OF_USER"),
     items: [
       { title: "Home", icon: "mdi-home", route: "/" },
-      // { title: "About", icon: "mdi-home", route: "/admin" },
+      // { title: "About", icon: "mdi-home", route: "/#about" },
       // { title: "Post", icon: "mdi-home", route: "/post" },
       // { title: "Videos", icon: "mdi-video", route: "/videos" },
       //  {

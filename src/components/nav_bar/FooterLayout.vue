@@ -1,16 +1,19 @@
 <template>
-  <div >
+  <div  >
     <!-- <v-layout justify-center>
       <v-card class="card" height="50vh" width="70%"> </v-card>
     </v-layout> -->
-    <v-footer dark padless>
+    <v-footer  padless>
       <v-card
         width="100%"
         elevation="8"
         tile
-        dark
-        class="primary darken-1 white--text text-center pt-10"
+        color=""
+        class="dark footer-card  primary--text text-center pt-10 "
       >
+      <div class="yoga-footer">
+        <img src="../../../public/image/yoga-logo.png" alt="">
+      </div>
         <v-card-text>
           <a
             :href="icon.link"
@@ -35,7 +38,7 @@
 
         <v-divider></v-divider>
 
-        <v-card-text class="white--text">
+        <v-card-text class="primary--text">
           {{ new Date().getFullYear() }} —
           <strong>{{ title  }}</strong>
         </v-card-text>
@@ -58,6 +61,12 @@ export default {
 };
 </script>
 <style>
+.yoga-footer{
+  height: 100px;
+}
+.yoga-footer img{
+  height: 100%;
+}
 .icon-link {
   text-decoration: none;
 }
@@ -65,5 +74,8 @@ export default {
   position: relative;
   margin-bottom: 100px;
   z-index: 10;
+}
+.footer-card{
+  /* height: 30vh; */
 }
 </style>

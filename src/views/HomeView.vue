@@ -1,9 +1,9 @@
 <template>
   <div id="main">
     <Banner id="banner" />
-    <div class="arrow-up" @click="select">
+    <!-- <div class="arrow-up" @click="select">
       <img src="../../public/image/arrow-up.png" alt="">
-    </div>
+    </div> -->
     <AboutUs />
     <WhatWeDo />
   </div>
