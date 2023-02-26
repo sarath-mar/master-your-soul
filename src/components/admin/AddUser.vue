@@ -352,7 +352,7 @@ ul {
   color: #39b54a;
 }
 v-card {
-  background-color: #39b54a !important;
+  /* background-color: #39b54a !important; */
 }
 /* #39B54A */
 </style>

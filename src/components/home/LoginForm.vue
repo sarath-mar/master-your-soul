@@ -3,7 +3,7 @@
     <v-btn x-large class="button" color="primary" @click="showDialog">
       LOGIN
     </v-btn>
-    <v-dialog v-model="dialogOpen" class="login-popup" max-width="350">
+    <v-dialog v-model="dialogOpen" class="login-popup" max-width="300">
       <!-- <template v-slot:activator="{ on, attrs }">
       <v-btn x-large class="button" color="primary" v-bind="attrs" v-on="on">
         LOGIN
@@ -210,6 +210,6 @@ export default {
 </script>
 <style>
 .login-popup {
-  width: 60px;
+  /* width: 60px; */
 }
 </style>
