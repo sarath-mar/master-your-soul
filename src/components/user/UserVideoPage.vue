@@ -5,13 +5,12 @@
     </div>
 
     <div class="course-main">
-      <div class="d-flex align-center justify-space-between">
+      <div class="course-sub">
         <div>
-          <h1 class="primary--text helo-sub">All Courses</h1>
+          <h1 @click="viewCourse"  class="primary--text helo-sub">All Courses</h1>
         </div>
         <div>
           <v-text-field
-            :loading="loading"
             label="Search Courses"
             append-icon="mdi-magnify"
             outlined
@@ -48,7 +47,15 @@
               </h2>
               <h3 class="mt-2 text-center">{{ course.description }}</h3>
               <div class="mt-3 text-center">
-                <v-btn class="primary">View Course</v-btn>
+                <router-link
+                  :to="{
+                    name: 'SingleCourse', 
+                    // params: { customerId: celebrity.customer._id },
+                    // query: { customerId: celebrity.customer._id },
+                  }"
+                >
+                  <v-btn  class="primary">View Course</v-btn>
+                </router-link>
               </div>
             </v-card>
           </div>
@@ -114,6 +121,9 @@ export default {
     // add(){
     //   this.counter++;
     // },
+    async viewCourse() {
+      this.$router.push({ path: "/single-course" });
+    },
     async getVideoData(limitData) {
       this.videoData = [];
       const auth = getAuth();
@@ -139,7 +149,7 @@ export default {
     },
   },
   created() {
-    this.getVideoData(this.limitData);
+    // this.getVideoData(this.limitData);
   },
 };
 </script>
@@ -160,15 +170,19 @@ export default {
 .course-group-division {
   margin-top: 20px;
   padding-bottom: 30px;
-  display: grid;
+  display: flex;
   gap: 20px;
-  grid-auto-flow: column;
-  scroll-behavior: auto;
+  /* grid-auto-flow: column; */
+  scroll-behavior: smooth;
   overflow-y: auto;
+  overflow-x: auto;
+  scrollbar-width: none;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
-  scrollbar-width: none;
   /* grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); */
+}
+.course-group-division::-webkit-scrollbar {
+  display: none;
 }
 .course-group-card {
   /* background-image: url("../../../public/image/course/course-1.jpg"); */
@@ -243,5 +257,15 @@ export default {
 .text-title {
   font-size: 1.5rem;
   text-align: center;
+}
+.course-sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media screen and (max-width: 600px) {
+  .course-sub {
+    flex-direction: column;
+  }
 }
 </style>

@@ -20,8 +20,8 @@ export default {
   components: { Banner, AboutUs, WhatWeDo },
   methods:{
     select(event) {
-      console.log(event)
-          event.currentTarget.id="main";
+      // console.log(event)
+          // event.currentTarget.id="main";
             // console.log(targetId); // returns 'foo'
         }
   }
