@@ -3,11 +3,11 @@
     <div class="breadcrumb">
       <div class="main-line">
         <div class="first-line">
-          <div class="inner-line">
+          <div class="inner-line ">
             <h3 class="primary--text">Instructor</h3>
             <h4>Anagha</h4>
           </div>
-          <div class="inner-line mt-3">
+          <div class="inner-line mt-3 ">
             <h3 class="primary--text">Category</h3>
             <h4>Bhikran Yoga</h4>
           </div>
@@ -17,6 +17,7 @@
         </div>
       </div>
     </div>
+   
     <course-view/>
   </div>
 </template>
@@ -31,6 +32,7 @@ export default {
 .course-main {
   padding: 5vh 5vw;
 }
+
 .first-line {
   padding: 30px;
 }

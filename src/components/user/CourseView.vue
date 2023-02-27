@@ -1,5 +1,16 @@
 <template>
   <div class="tab-course-main">
+    <div class="my-4 view-all-course">
+      <router-link
+        :to="{
+          name: 'courses',
+          // params: { customerId: celebrity.customer._id },
+          // query: { customerId: celebrity.customer._id },
+        }"
+      >
+        <v-btn class=" primary--text"> view all courses </v-btn>
+      </router-link>
+    </div>
     <v-tabs v-model="tabs" color="primary" align-tabs="center">
       <v-tab v-for="(tabData, i) in tabDatas" :key="i">{{
         tabData.title
@@ -32,6 +43,10 @@ export default {
 };
 </script>
 <style>
+.view-all-course {
+  display: flex;
+  justify-content: end ;
+}
 .tab-course-main {
   padding: 5vh 5vw;
   padding-bottom: 100px;
