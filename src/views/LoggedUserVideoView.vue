@@ -1,21 +1,18 @@
-<template >
-    <div>  
-       <UserVideoPage class="user-video"/>
-    </div>
+<template>
+  <div class="user-video">
+    <UserCoursePage />
+  </div>
 </template>
 <script>
-import UserVideoPage from '@/components/user/UserVideoPage.vue';
-export default{
-    components:{
-        UserVideoPage
-    },
-    data() {
-        return {
-            
-        }
-    },
-
-}
+import UserCoursePage from "@/components/user/UserCoursePage.vue";
+export default {
+  components: {
+    UserCoursePage,
+  },
+  data() {
+    return {};
+  },
+};
 </script>
 <style>
 .user-video {

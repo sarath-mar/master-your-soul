@@ -1,14 +1,16 @@
 <template>
   <div class="main-single-course">
-    <h1>Course</h1>
+    <single-course />
   </div>
 </template>
 <script>
+import SingleCourse from "@/components/user/SingleCourse.vue";
 export default {
-  name: "SingleCourse",
-  }</script>
+  components: { SingleCourse },
+};
+</script>
 <style>
 .main-single-course {
-  padding: 5vh 5vw;
+    margin-top: 6rem; 
 }
 </style>

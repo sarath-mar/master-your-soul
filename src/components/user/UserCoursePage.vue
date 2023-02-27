@@ -7,7 +7,7 @@
     <div class="course-main">
       <div class="course-sub">
         <div>
-          <h1 @click="viewCourse"  class="primary--text helo-sub">All Courses</h1>
+          <h1 class="primary--text helo-sub">All Courses</h1>
         </div>
         <div>
           <v-text-field
@@ -15,18 +15,10 @@
             append-icon="mdi-magnify"
             outlined
             hide-details
-            @click:append-inner="onClick"
           ></v-text-field>
         </div>
       </div>
       <div class="course-group">
-        <!-- <v-carousel
-          cycle
-          height="400"
-          hide-delimiter-background
-          show-arrows="hover"
-        > -->
-        <!-- <v-carousel-item v-for="(slide, i) in slides" :key="i"> -->
         <div class="course-group-division">
           <div class="main-group-card" v-for="(course, i) in courses" :key="i">
             <v-card class="course-group-card">
@@ -60,8 +52,6 @@
             </v-card>
           </div>
         </div>
-        <!-- </v-carousel-item> -->
-        <!-- </v-carousel> -->
       </div>
       <!-- <div>
         <v-row>
@@ -117,40 +107,7 @@ export default {
     ],
   }),
 
-  methods: {
-    // add(){
-    //   this.counter++;
-    // },
-    async viewCourse() {
-      this.$router.push({ path: "/single-course" });
-    },
-    async getVideoData(limitData) {
-      this.videoData = [];
-      const auth = getAuth();
-      onAuthStateChanged(auth, async (user) => {
-        if (user) {
-          const q = query(videoCollection, limit(limitData));
-          const videoListData = await getDocs(q);
-          if (videoListData.docs.lenght);
-          videoListData.forEach((doc) => {
-            let eachvideo = {
-              id: doc.id,
-              ...doc.data(),
-            };
-            this.videoData.push(eachvideo);
-          });
-        } else {
-          this.videoData = [];
-          this.$router.replace({ path: "/404-error" });
-        }
-      });
-
-      console.log(this.videoData);
-    },
-  },
-  created() {
-    // this.getVideoData(this.limitData);
-  },
+ 
 };
 </script>
 <style>

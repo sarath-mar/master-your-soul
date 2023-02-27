@@ -3,14 +3,14 @@
     <v-btn x-large class="button" color="primary" @click="showDialog">
       LOGIN
     </v-btn>
-    <v-dialog v-model="dialogOpen" class="login-popup" max-width="600">
+    <v-dialog v-model="dialogOpen" class="login-popup" width='auto'>
       <!-- <template v-slot:activator="{ on, attrs }">
       <v-btn x-large class="button" color="primary" v-bind="attrs" v-on="on">
         LOGIN
       </v-btn>
     </template> -->
       <!-- <template v-slot:default="dialog"> -->
-      <v-card>
+      <v-card min-width="300">
         <v-toolbar color="primary" dark>Login</v-toolbar>
         <v-card-text>
           <v-form ref="form" v-model="valid">

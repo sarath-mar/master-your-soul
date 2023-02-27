@@ -7,7 +7,7 @@
         class="overflow-y-auto"
         
       > -->
-      <router-view />
+      <router-view :key="$route.path" />
       <!-- </v-sheet> -->
     </v-main>
     <footer-layout />
