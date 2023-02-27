@@ -1,32 +1,12 @@
 <template>
-  <div class="pa-10">
+  <div class="tab-course-main">
     <v-tabs v-model="tabs" color="primary" align-tabs="center">
       <v-tab v-for="(tabData, i) in tabDatas" :key="i">{{
         tabData.title
       }}</v-tab>
-      <!-- <v-tab :key="1">City</v-tab>
-      <v-tab :key="2">Abstract</v-tab> -->
-      <!-- <v-tab
-        class="
-          font-weight-bold 
-          text-caption text- sm-body-2
-          dark--text     
-          text-capitalize
-          white
-          elevation-2
-          mb-1
-          ms-4
-          rounded-lg
-        "
-        :class="{ 'font-weight-bold white--text ': tabs === 1 }"
-        :key="1"
-        ><label style="cursor: pointer" class="custom_slider"
-          >Refund</label
-        ></v-tab
-      > -->
     </v-tabs>
 
-    <v-tabs-items v-model="tabs" class="mt-5">
+    <v-tabs-items v-model="tabs" class="mt-5 tab-items">
       <v-tab-item v-for="(tabData, i) in tabDatas" :key="i">
         <CourseDescription v-if="i == 0" />
         <curriculam v-if="i == 1" />
@@ -51,3 +31,17 @@ export default {
   }),
 };
 </script>
+<style>
+.tab-course-main {
+  padding: 5vh 5vw;
+  padding-bottom: 100px;
+}
+@media screen and (max-width: 600px) {
+  .tab-course-main {
+    padding: 5vh 0vw;
+  }
+  .tab-items {
+    padding: 0vh 5vw;
+  }
+}
+</style>

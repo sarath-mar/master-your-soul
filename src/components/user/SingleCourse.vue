@@ -15,9 +15,7 @@
             <h1 class="text-center">Arts of Living</h1>
           </div>
         </div>
-        <div></div>
       </div>
-      <div></div>
     </div>
     <course-view/>
   </div>
@@ -37,17 +35,18 @@ export default {
   padding: 30px;
 }
 .first-line h1 {
-  font-size: 3.5em;
+  font-size: 2.5em;
   font-weight: 700;
   letter-spacing: 0.3rem;
+  /* padding: 10px; */
 }
 .first-line h3 {
-  font-size: 1em;
+  font-size: .8em;
   font-weight: 700;
   letter-spacing: 0.1rem;
 }
 .first-line h4 {
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: 700;
   letter-spacing: 0.2rem;
 }
